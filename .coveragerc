@@ -1,0 +1,8 @@
+[run]
+source = app
+omit =
+    app/*worker.py
+    app/worker.py
+
+[report]
+show_missing = True
