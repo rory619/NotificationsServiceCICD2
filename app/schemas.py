@@ -1,5 +1,4 @@
 from typing import Annotated
-from annotated_types import Ge, Le
 from pydantic import BaseModel, ConfigDict, StringConstraints
 
 # ---------- Reusable type aliases ----------

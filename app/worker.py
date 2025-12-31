@@ -11,12 +11,10 @@ async def main():
     connection = await aio_pika.connect_robust(RABBIT_URL)
     channel = await connection.channel()
 
-
     queue = await channel.declare_queue("orders_queue", durable=True)
 
     print("Waiting for messages on 'orders_queue'...")
 
-    
     async with queue.iterator() as q:
         async for message in q:
             async with message.process():
