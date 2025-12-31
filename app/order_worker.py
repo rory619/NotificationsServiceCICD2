@@ -18,17 +18,13 @@ async def main():
     # Queue for order events
     queue = await ch.declare_queue("order_events_queue")
 
-    
     await queue.bind(ex, routing_key="order.*")
-  
-
 
     print("Listening for order events (routing key: 'order.*')...")
 
     async with queue.iterator() as q:
         async for msg in q:
             async with msg.process():
-                
                 data = json.loads(msg.body)
                 print("Order Event:", msg.routing_key, data)
 
